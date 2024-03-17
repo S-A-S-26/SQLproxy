@@ -2,6 +2,7 @@
 Proxy data
 
 ```$ mysql -u admin -padmin -h 127.0.0.1 -P6032 --prompt 'ProxySQL Admin> '``` in this the port 6032 is for admin login and configuration.
+6033 is for app connections.
 
 #### Main things to configure for read write proxy mysql
 1. __mysql_servers__ - specify which servers will be used with their hostgroup_id,hostname,port ```INSERT INTO mysql_servers(hostgroup_id,hostname,port) VALUES (1,'10.0.0.1',3306);``` this is also known as adding backends.
