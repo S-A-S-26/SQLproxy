@@ -9,3 +9,7 @@ Proxy data
 2. __mysql_users__ - application user's allowed to connect to database using the mysql proxy.
 3. __mysql_replication_hostgroups__ - is used to define the hostgroups like 1 belongs to readers group , 2 belongs to writer's group etc.
 4. __mysql_query_rules__ - is used to define which query should proxy to where like if it is ^select* statement then it should go to reader's group , if it is ^insert* statement's then it should go to writer's group. 
+
+#### Users to create.
+-__monitor user__-
+  -create a user in mysql first with '%' all host access ```create user proxy_mon@'%' identified by 'MySQL@321';```
