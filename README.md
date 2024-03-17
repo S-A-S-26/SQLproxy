@@ -30,3 +30,6 @@ Proxy data
   - repeat the runtime and save disk as always for proxysql
 - To check ip and port in terminal enter  ```netstat -tulnp | grep -i proxysql```
 - ```hostname -I``` display the IP addresses associated with the system's hostname.
+
+- Finally enter into the mysql app connection port 6033 and test it.
+  -```mysql -h'enter hostname here for proxysql' -P6033 -uapp -p'MySQL@321' -e"create database test"``` -u give the mysql_user that was created in previous step -p and also provide the password for the same.
