@@ -11,5 +11,6 @@ Proxy data
 4. __mysql_query_rules__ - is used to define which query should proxy to where like if it is ^select* statement then it should go to reader's group , if it is ^insert* statement's then it should go to writer's group. 
 
 #### Users to create.
--__monitor user__-
-  -create a user in mysql first with '%' all host access ```create user proxy_mon@'%' identified by 'MySQL@321';```
+- __monitor user__- to monitor the stats from my sql
+  - create a user in mysql first with '%' all host access ```create user proxy_mon@'%' identified by 'MySQL@321';```
+  - give permissions only specific permissions are needed in this eg: all are given ```grant all on *.* to proxy_mon@'%';
