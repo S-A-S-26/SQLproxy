@@ -13,10 +13,20 @@ Proxy data
 #### Users to create.
 - __monitor user__- to monitor the stats from my sql **this is done in mysql login*
   - create a user in mysql first with '%' all host access ```create user proxy_mon@'%' identified by 'MySQL@321';``` in this the identified by denotes the password
-  - give permissions only specific permissions are needed in this eg: all are given ```grant all on *.* to proxy_mon@'%';
+  - give permissions only specific permissions are needed in this eg: all are given ```grant all on *.* to proxy_mon@'%';```
   - run ```flush privileges;``` to apply changes
 - Define in it proxysql the newly created monitor user and its password to proxysql variables **this is done in proxysql login*
   -  ```set mysql-monitor_password='MySQL@321';```
   -  ```set mysql-monitor_username='proxy_mon';```
   -  ```load mysql variables to runtime;```
   -  ```save mysql variables to disk;```
+- Create an application user who can access the database via proxy *this needs to be done in mysql login*
+  - ```create user app@'%' identified by 'MySQL@321';``` 
+  - ```grant all on *.* to app@'%';```
+  - ```flush privileges;```
+- Set this application user to the proxysql also known as whitelisting *this needs to be done in proxysql login*
+  - ```insert into mysql_users (username,password,active,default_hostgroup,max_connections) values ('app','MySQL@321',1,10,100)``` hostgroup add from whatever host groups you have created mine was 10 as read hostgroup
+  - to check use ```select * from mysql_users;```
+  - repeat the runtime and save disk as always for proxysql
+- To check ip and port in terminal enter  ```netstat -tulnp | grep -i proxysql```
+- ```hostname -I``` display the IP addresses associated with the system's hostname.
